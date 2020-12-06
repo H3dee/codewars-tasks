@@ -22,12 +22,13 @@ const photoManager = {
     return this.nameStorage.has(name);
   },
 };
+const alphabet = ["a", "b", "c", "d", "e", "f", "g"];
+
 
 const getRandom = (min = 1, max = 7) =>
   Math.round(Math.random() * (max - min) + min);
 
-const generateName = () => {
-  const alphabet = ["a", "b", "c", "d", "e", "f", "g"];
+const getName = () => {
   let imageName = "";
 
   for (let i = 0; i < 6; i++) {
@@ -37,3 +38,16 @@ const generateName = () => {
 
   return imageName;
 };
+
+
+//==========================================
+//Here is solution with using generators
+
+function* nameGenerator(){
+  while(true){
+    yield getName()
+  }
+}
+
+const generateName = nameGenerator()
+
